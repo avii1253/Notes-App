@@ -25,8 +25,12 @@ notesContainer.addEventListener("click", (event) => {
             arrayOfNotes = arrayOfNotes.filter(({ id }) => {
                 return id.toString() !== noteID;
             });
-            showOthers.innerHTML = renderNotes(arrayOfNotes);
-            showPinned.innerHTML = renderNotes(arrayOfNotes);
+             showOthers.innerHTML = renderNotes(arrayOfNotes.filter(({ isPinned, isArchived }) =>
+                !isPinned && !isArchived
+            ));
+            showPinned.innerHTML = renderNotes(arrayOfNotes.filter(({ isPinned, isArchived }) =>
+                isPinned && !isArchived
+            ));
             localStorage.setItem("notes", JSON.stringify(arrayOfNotes));
             break;
 
