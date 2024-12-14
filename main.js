@@ -26,6 +26,7 @@ notesContainer.addEventListener("click", (event) => {
                 return id.toString() !== noteID;
             });
             showOthers.innerHTML = renderNotes(arrayOfNotes);
+            showPinned.innerHTML = renderNotes(arrayOfNotes);
             localStorage.setItem("notes", JSON.stringify(arrayOfNotes));
             break;
 
